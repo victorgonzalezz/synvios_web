@@ -1,38 +1,59 @@
-import produce from 'immer';
-import { ICart } from './types';
+import produce from "immer";
+import { Reducer } from "react";
+import { ICart } from "./types";
 
-const INITIAL_STATE: ICart[] = [];
+// const INITIAL_STATE: ICart = {
+//   items: [
+//     {
+//       amount: 1,
+//       id: 1,
+//       image:
+//         "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg",
+//       price: 179.9,
+//       title: "Tênis de Caminhada Leve Confortável",
+//     },
+//   ],
+// };
 
-export default function cart(
-  state = INITIAL_STATE,
-  action:any) {
+const cart: Reducer<ICart, any> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case '@cart/ADD_SUCCESS':
-      return produce(state, draft => {
-        const { product } = action;
-        draft.push(product);
+    case "@cart/ADD_SUCCESS":
+      console.log(action);
+
+      const { product } = action.payload;
+
+      return produce(state, (draft) => {
+        console.log({ draft });
+
+        draft.items.push(product);
       });
 
-    // case '@cart/REMOVE':
-    //   return produce(state, draft => {
-    //     const productIndex = draft.findIndex(p => p.id === action.id);
+    case "@cart/REMOVE":
+      return produce(state, (draft) => {
+        const productIndex = draft.items.findIndex(
+          (item) => item.id === action.id
+        );
 
-    //     if (productIndex >= 0) {
-    //       draft.splice(productIndex, 1);
-    //     }
-    //   });
+        if (productIndex >= 0) {
+          draft.items.splice(productIndex, 1);
+        }
+      });
 
-    // case '@cart/UPDATE_AMOUNT_SUCCESS': {
-    //   return produce(state, draft => {
-    //     const productIndex = draft
+    case "@cart/UPDATE_AMOUNT_SUCCESS": {
+      return produce(state, (draft) => {
+        const productIndex = draft.items.findIndex(
+          (p) => p.id === action.payload.id
+        );
 
-    //     if (productIndex >= 0) {
-    //       draft[productIndex].amount = Number(action.amount);
-    //     }
-    //   });
-    // }
+        if (productIndex >= 0) {
+          draft.items[productIndex].amount = Number(action.payload.amount);
+        }
+      });
+    }
 
     default:
       return state;
   }
-}
+};
+
+export default cart;

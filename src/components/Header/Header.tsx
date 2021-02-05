@@ -1,36 +1,32 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
-import { MdShoppingCart } from 'react-icons/md';
+import React from "react";
+import { useSelector } from "react-redux";
+// import { Link } from "react-router-dom";
+import { MdShoppingCart } from "react-icons/md";
+import { Container, Cart } from "./Header_Styles";
+import { IState } from "../../store/modules/cart/sagas";
+import { useHistory } from "react-router-dom";
 
-import { Container, Cart } from './Header_Styles';
-
-
-// import logo from '../../assets/images/logo.svg';
+// import logo from "../../assets/images/logo.svg";
 
 export default function Header() {
-  const cartSize = useSelector(state => {
-      console.log(state)
-      return 1
-  })
-  // const cartSize = useSelector(state =>
-  // //   // state.reduce((total, p) => {
-  // //   //   return total + p.amount;
-  // //   // }, 0)
-  // // );
+  const cartSize = useSelector((state: IState) =>
+    state.cart.items.reduce((total, p) => {
+      return total + p.amount;
+    }, 0)
+  );
+
+  const history = useHistory();
 
   return (
     <Container>
-      {/* <Link to="/">
-        <figure>
-          <img src={logo} alt="RocketShoes" />
-        </figure>
-      </Link> */}
+      <button onClick={() => history.push("/")}>HOME</button>
 
       <Cart to="/cart">
         <div>
           <strong>My Cart</strong>
-          <span>{cartSize === 1 ? `${cartSize} product` : `${cartSize} products`}</span>
+          <span>
+            {cartSize === 1 ? `${cartSize} product` : `${cartSize} products`}
+          </span>
         </div>
         <MdShoppingCart size={36} color="#FFF" />
         <span>{cartSize}</span>
