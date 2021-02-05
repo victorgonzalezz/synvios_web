@@ -10,14 +10,12 @@
 
 This project was developed with the following technologies:
 
+-  [Typescript](https://www.typescriptlang.org//)
 -  [ReactJS](https://reactjs.org/)
 -  [React Hooks](https://reactjs.org/docs/hooks-intro.html)
--  [React Native](https://facebook.github.io/react-native/)
 -  [styled-components](https://www.styled-components.com/)
--  [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 -  [Redux](https://redux.js.org/)
 -  [Redux-Saga](https://redux-saga.js.org/)
--  [React Navigation](https://reactnavigation.org/)
 -  [Axios](https://github.com/axios/axios)
 -  [JSON Server](https://github.com/typicode/json-server)
 -  [Polished](https://polished.js.org/)
