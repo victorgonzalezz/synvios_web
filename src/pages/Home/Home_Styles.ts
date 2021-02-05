@@ -68,10 +68,10 @@ export const ProductList = styled.ul`
           align-items: center;
           transition: 180ms ease-in-out;
           &:hover {
-            background: ${lighten(0.04, '#7159c1')};
+            background: ${lighten(0.09, '#01579b')};
           }
           &:active {
-            background: ${darken(0.04, '#7159c1')};
+            background: ${darken(0.09, '#7159c1')};
           }
           > div:first-child {
             display: flex;

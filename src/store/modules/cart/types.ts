@@ -7,7 +7,7 @@ export type IProduct = {
 };
 
 export type ICart = {
-  cart: IProduct[];
+  items: IProduct[];
 };
 
 export const CartActions = {

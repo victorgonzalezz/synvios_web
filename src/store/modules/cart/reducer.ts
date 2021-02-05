@@ -2,18 +2,10 @@ import produce from "immer";
 import { Reducer } from "react";
 import { ICart } from "./types";
 
-// const INITIAL_STATE: ICart = {
-//   items: [
-//     {
-//       amount: 1,
-//       id: 1,
-//       image:
-//         "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg",
-//       price: 179.9,
-//       title: "Tênis de Caminhada Leve Confortável",
-//     },
-//   ],
-// };
+const INITIAL_STATE: ICart = {
+  items: [
+  ],
+};
 
 const cart: Reducer<ICart, any> = (state = INITIAL_STATE, action) => {
   switch (action.type) {

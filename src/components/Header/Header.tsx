@@ -1,12 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-// import { Link } from "react-router-dom";
 import { MdShoppingCart } from "react-icons/md";
 import { Container, Cart } from "./Header_Styles";
 import { IState } from "../../store/modules/cart/sagas";
 import { useHistory } from "react-router-dom";
-
-// import logo from "../../assets/images/logo.svg";
 
 export default function Header() {
   const cartSize = useSelector((state: IState) =>
@@ -19,7 +16,7 @@ export default function Header() {
 
   return (
     <Container>
-      <button onClick={() => history.push("/")}>HOME</button>
+      <button onClick={() => history.push("/")}>Ecommerce Synvios</button>
 
       <Cart to="/cart">
         <div>

@@ -61,7 +61,7 @@ export default function Cart() {
 
             <div>
               <h2>Oops...</h2>
-              <p>Looks like your shopping cart is empty!</p>
+              <p>Cart empty!</p>
               <StartShopping to="/">Start Shopping</StartShopping>
             </div>
           </EmptyCart>
@@ -119,7 +119,7 @@ export default function Cart() {
             </ProductTable>
 
             <footer>
-              <button type="submit">Proceed to Checkout</button>
+              <button type="submit">Checkout</button>
               <Total>
                 <span>TOTAL:</span>
                 <strong>{total}</strong>

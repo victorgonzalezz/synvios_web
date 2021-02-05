@@ -14,7 +14,7 @@ export default createGlobalStyle`
     overflow: auto;
   }
   body {
-    background: linear-gradient(-45deg, rgba(54,54,102,1) 0%, rgba(113,89,193,1) 100%);
+    background: linear-gradient(-45deg, rgba(54,54,95,100) 0%, rgba(3,89,193,1) 100%);
     -webkit-font-smoothing: antialiased;
     color: #333;
     position: relative;

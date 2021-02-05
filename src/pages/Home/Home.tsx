@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { formatPrice } from "../../utils/format";
 import GridPlaceholder from "../../components/GridPlaceholder/GridPlaceholder";
 import { ProductList } from "./Home_Styles";
 import { MdAddShoppingCart } from "react-icons/md";
-import Loader from "react-loader-spinner";
 import api from "../../services/api";
 import { IProduct } from "../../store/modules/cart/types";
 import { addToCartRequest } from "../../store/modules/cart/actions";
 import Header from "../../components/Header";
+import { IState } from "../../store/modules/cart/sagas";
 interface ProductsState extends IProduct {
   priceFormatted: string;
   loading: boolean;
@@ -16,6 +16,13 @@ interface ProductsState extends IProduct {
 
 const Home: React.FC = () => {
   const [products, setProducts] = useState([] as ProductsState[]);
+  const amount = useSelector((state: IState) =>
+    state.cart.items.reduce((sumAmount:any, product) => {
+      sumAmount[product.id] = product.amount;
+
+      return sumAmount;
+    }, {})
+  );
 
   const dispatch = useDispatch();
 
@@ -57,17 +64,16 @@ const Home: React.FC = () => {
                 <span>{product.priceFormatted}</span>
 
                 <button type="button" onClick={() => handleAddProduct(product)}>
-                  {product.loading ? (
-                    <Loader type="Oval" color="#FFF" height={16} width={24} />
-                  ) : (
+
                     <div>
                       <MdAddShoppingCart size={16} color="#FFF" />
-                      {product.amount || 0}
+                      {amount[product.id] || 0}
                     </div>
-                  )}
+                  
 
                   <span>ADD TO CART</span>
                 </button>
+                
               </div>
             </li>
           ))
