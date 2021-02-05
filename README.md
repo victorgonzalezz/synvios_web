@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-<a href="">Link to the challenge</a>
+<a href="https://synvios-web.vercel.app/">Link to the challenge</a>
 </p>
 
 ## 🚀 Built with
